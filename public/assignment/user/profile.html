@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Title</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="../css/style.css" rel="stylesheet"/>
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <span class="navbar-brand adjust-padding-header remove-hover-heading padding-left-header">
+                Profile
+            </span>
+            <p class="navbar-text pull-right fixed-top-header-arrow">
+                <a href="profile.html" class="navbar-link">
+          <span class="glyphicon glyphicon-ok">
+          </span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+
+    <label for="firstName">First Name</label>
+    <input name="firstName"
+           id="firstName"
+           placeholder="alice"
+           class="form-control">
+
+    <label for="lastName">Last Name</label>
+    <input name="lastName"
+           id="lastName"
+           placeholder="wonderland"
+           class="form-control">
+
+    <label for="username">Usename</label>
+    <input name="username"
+           id="username"
+           value="alice"
+           class="form-control"
+           readonly>
+
+    <label for="email">Email</label>
+    <input type="email"
+            id="email"
+            name="email"
+            class="form-control"
+            placeholder="alice@google.com">
+
+    <label for="dob">Date of Birth</label>
+    <input type="date"
+           id="dob"
+           class="form-control"
+           name="dob">
+
+    <a href="../website/website-list.html"
+       class="btn btn-default btn-block btn-primary">Websites</a>
+
+    <a href="login.html"
+       class="btn btn-default btn-block btn-danger">Logout</a>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <p class="navbar-text pull-right fixed-top-header-arrow">
+                <a href="profile.html" class="navbar-link">
+                    <span class="glyphicon glyphicon-user">
+                    </span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
+
+</body>
+</html>

@@ -1,0 +1,154 @@
+input.form-control,
+textarea.form-control,
+select.form-control {
+    margin-bottom: 5px;
+}
+
+body {
+    padding-top: 60px;
+}
+.container-fluid>.navbar-header{
+    margin-left: 0px;
+    margin-right: 0px;
+}
+.navbar-default {
+    background-color: black;
+    border-color: black;
+}
+
+.navbar-default .navbar-brand {
+    color: white;
+}
+.navbar-header {
+    width: 100%;
+}
+
+.navbar-default .navbar-link {
+    color: white;
+}
+
+.navbar.navbar-default a {
+    color: #ffffff;
+}
+
+.split-left-scrollable{
+    position: absolute;
+    top: 60px;
+    bottom: 0px;
+    z-index: 1;
+    overflow-y: scroll;
+}
+.glyphicon-color{
+    color: white;
+}
+.active {
+    background-color: black !important;
+    border: none;
+}
+a:hover{
+    text-decoration: none;
+}
+
+.wd-widget {
+    margin-bottom: 10px;
+}
+
+.wd-widget > img {
+    width: 100%;
+}
+
+.wd-widget .wd-widget-toolbar {
+    position: absolute;
+    right: 15px;
+    background: white;
+    opacity: 0.9;
+    padding: 5px;
+    border-bottom-left-radius: 10px;
+}
+
+.toolbar-youtube-position{
+    top: 0px;
+    right: 0px !important;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px; height: 0; overflow: hidden;
+}
+.set-full-width{
+    width:100%;
+}
+.fixed-top-header{
+    padding-left: 0px;
+    float: left;
+    height: 50px;
+    padding: 15px 15px;
+    font-size: 18px;
+    line-height: 20px;
+    color: white;
+}
+.video-container iframe,
+.video-container object,
+.video-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.padding-left-footer{
+    padding-right: 15px !important;
+}
+.fixed-top-header-arrow{
+    font-size: 12px;
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+.fixed-top-right-link{
+    font-size: 12px;
+    padding-left: 0px;
+    padding-right: 15px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+.a-tag-color{
+    color:black;
+}
+.footer-padding{
+    padding-right: 15px;
+}
+.navbar.navbar-default a {
+    color: #ffffff;
+}
+a:hover{
+    text-decoration: none;
+}
+.remove-hover-heading{
+    color: white !important;
+}
+.padding-left-header{
+    padding-left: 15px !important;
+}
+.arrow-padding{
+    margin-right: 0px;
+}
+.adjust-padding-header{
+    padding-left: 0px;
+}
+@media (min-width: 1200px) {
+    .split-right-scrollable {
+        width: 75%;
+        position: absolute;
+        right: 0px;
+        overflow-y: scroll;
+        top: 60px;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .padding-left-header{
+        padding-left: 0px !important;
+    }
+    }
