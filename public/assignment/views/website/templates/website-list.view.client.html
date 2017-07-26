@@ -1,0 +1,60 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="../../user/templates/profile.view.client.html" class="navbar-text pull-left arrow-padding">
+          <span class="glyphicon glyphicon-chevron-left">
+          </span>
+            </a>
+            <span class="fixed-top-header">Websites</span>
+            <p class="navbar-text pull-right fixed-top-right-link">
+                <a href="#!/user/{{model.userId}}/website/new" class="navbar-link">
+          <span class="glyphicon glyphicon-plus">
+          </span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <ul class="list-group">
+        <li class="list-group-item active">
+            <div class="row">
+                <div class="col-xs-4">Name</div>
+                <div class="col-xs-6 col-sm-3">Updated</div>
+                <div class="col-sm-3 hidden-xs">Visits</div>
+                <div class="col-xs-2">
+
+                </div>
+            </div>
+        </li>
+        <li class="list-group-item" ng-repeat="website in model.websites">
+            <div class="row">
+                <div class="col-xs-4">
+                    <a href="#!/user/{{model.userId}}/website/{{website._id}}/page" class="a-tag-color">
+                        {{website.name}}
+                    </a>
+                </div>
+                <div class="col-xs-6 col-sm-3">2017-05-07</div>
+                <div class="col-sm-3 hidden-xs">1,11,111</div>
+                <div class="col-xs-2">
+                    <a href="#!/user/{{model.userId}}/website/{{website._id}}" class="a-tag-color">
+                        <span class="glyphicon glyphicon-cog pull-right"></span>
+                    </a>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <p class="navbar-text pull-right fixed-top-header-arrow">
+                <a href="../../user/templates/profile.view.client.html" class="navbar-link">
+                    <span class="glyphicon glyphicon-user footer-padding">
+                    </span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
