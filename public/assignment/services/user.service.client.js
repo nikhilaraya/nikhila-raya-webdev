@@ -17,10 +17,16 @@
             "findUserByUsernameAndPassword": findUserByUsernameAndPassword,
             "findUserById": findUserById,
             "createUser": createUser,
-            "updateUser": updateUser
+            "updateUser": updateUser,
+            "deleteUser": deleteUser
         };
         return api;
 
+        function deleteUser(userId) {
+            var userFound = findUserById(userId);
+            var index = users.indexOf(userFound);
+            users.splice(index,1);
+        }
         function updateUser(userId, user) {
             for(var u in users) {
                 if(users[u]._id === userId) {

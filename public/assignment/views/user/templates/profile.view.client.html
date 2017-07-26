@@ -1,3 +1,4 @@
+<link href="css/style.css" rel="stylesheet"/>
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -54,18 +55,20 @@
            name="dob">
 
     <a href="#!/user/{{model.user._id}}/website"
-       class="btn btn-default btn-block btn-primary">Websites</a>
+       class="btn btn-default btn-block btn-primary a-tag-color">Websites</a>
 
-    <a href="#!/login"
-       class="btn btn-default btn-block btn-danger">Logout</a>
-
-    <a class="btn btn-default btn-danger btn-block"
-       ng-click="model.unregister()"
-       role="button">Unregister</a>
-
-    <a class="btn btn-default btn-primary btn-block"
+    <a class="btn btn-default btn-success btn-block a-tag-color"
        ng-click="model.updateUser()"
        role="button">Update</a>
+
+    <a href="#!/login"
+       class="btn btn-default btn-block btn-danger ">Logout</a>
+
+    <a class="btn btn-default btn-danger btn-block"
+       ng-click="model.unRegister(model.user._id)"
+       role="button">Unregister</a>
+
+
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
