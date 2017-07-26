@@ -7,7 +7,7 @@
             </a>
             <span class="fixed-top-header">Edit Widget</span>
             <p class="navbar-text pull-right fixed-top-right-link">
-                <a ng-click="model.updateYoutube(model.name,model.text,model.url,model.width)" class="navbar-link">
+                <a ng-click="model.editYoutube(model.name,model.text,model.url,model.width)" class="navbar-link">
                     <span class="glyphicon glyphicon-ok">
           </span>
                 </a>
@@ -51,7 +51,7 @@
     <div class="container-fluid">
         <div class="navbar-header">
             <p class="navbar-text pull-right fixed-top-header-arrow">
-                <a href="../user/templates/profile.html" class="navbar-link">
+                <a href="#!/user/{{model.userId}}" class="navbar-link">
                     <span class="glyphicon glyphicon-user footer-padding">
                     </span>
                 </a>

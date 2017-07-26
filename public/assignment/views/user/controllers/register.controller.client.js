@@ -17,7 +17,7 @@
             var _user = userService.findUserByUsername(user.username);
             if(!_user) {
                 var user = userService.createUser(user);
-                $location.url("/profile/"+user._id);
+                $location.url("/user/"+user._id);
             } else {
                 model.error = "User already exists";
             }
