@@ -18,6 +18,7 @@
 </nav>
 
 <div class="container-fluid">
+    <div wd-draggable>
     <div ng-repeat="widget in model.widgets" class="wd-widget">
         <div class="wd-widget-toolbar">
             <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
@@ -26,6 +27,7 @@
             <span class="glyphicon glyphicon-align-justify"></span>
         </div>
         <div ng-include="model.getWidgetIncludeUrl(widget)"></div>
+    </div>
     </div>
 </div>
 

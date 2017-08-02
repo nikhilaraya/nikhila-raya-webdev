@@ -12,8 +12,18 @@
             model.deleteWebsite = deleteWebsite;
 
             function init() {
-                model.websites = websiteService.findWebsitesForUser(model.userId);
-                model.website = websiteService.findWebsiteById(model.websiteId);
+                websiteService
+                    .findWebsitesForUser(model.userId)
+                    .then(renderWebsites);
+                function renderWebsites(websites) {
+                    model.websites = websites;
+                }
+                websiteService
+                    .findWebsiteById(model.websiteId)
+                    .then(renderWebsite);
+                function renderWebsite(website) {
+                    model.website = website;
+                }
             }
             init();
 

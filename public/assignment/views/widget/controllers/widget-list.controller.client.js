@@ -10,7 +10,10 @@
         model.websiteId = $routeParams.websiteId;
         model.pageId = $routeParams.pageId;
         model.widgetId = $routeParams.widgetId;
-        model.widgets = widgetService.findWidgetByPageId(model.pageId);
+        widgetService.findWidgetByPageId(model.pageId).then(renderWidgets);
+        function renderWidgets(widgets) {
+            model.widgets = widgets;
+        }
         model.trustHtmlContent = trustHtmlContent;
         model.trustUrlResource = trustUrlResource;
         model.getWidgetIncludeUrl = getWidgetIncludeUrl;

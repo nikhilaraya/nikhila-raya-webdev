@@ -9,15 +9,17 @@
         model.websiteId = $routeParams.websiteId;
         model.pageId = $routeParams.pageId;
         model.widgetId = $routeParams.widgetId;
-        console.log(model.userId+model.websiteId+model.pageId+model.widgetId);
 
-        model.widget = widgetService.findWidgetById(model.widgetId);
-        console.log(model.widget._id);
-        model.name = model.widget.widgetType;
-        model.text = model.widget.text;
-        model.url = model.widget.url;
-        model.size = model.widget.size;
-        model.width = model.widget.width;
+        widgetService.findWidgetById(model.widgetId).then(renderWidget);
+        function renderWidget(widget) {
+            model.widget= widget;
+            model.name = model.widget.widgetType;
+            model.text = model.widget.text;
+            model.url = model.widget.url;
+            model.size = model.widget.size;
+            model.width = model.widget.width;
+        }
+
 
         model.editHeading = editHeading;
         model.editImage = editImage;
@@ -25,8 +27,9 @@
         model.deleteWidget = deleteWidget;
 
         function deleteWidget() {
-            widgetService.deleteWidget(model.widgetId);
-            $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
+            widgetService.deleteWidget(model.widgetId).then(function () {
+                $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
+            });
         }
 
         function editYoutube() {
@@ -37,9 +40,9 @@
                 url: model.url,
                 width: model.width
             }
-            widgetService.updateWidget(model.widgetId,youtube);
-            $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
-
+            widgetService.updateWidget(model.widgetId,youtube).then(function () {
+                $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
+            });
         }
         function editImage() {
             var imageWid ={
@@ -49,8 +52,9 @@
                 url: model.url,
                 width: model.width
             }
-            widgetService.updateWidget(model.widgetId,imageWid);
-            $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
+            widgetService.updateWidget(model.widgetId,imageWid).then(function () {
+                $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
+            });
         }
         function editHeading(){
             console.log("heading"+model.size+model.name);
@@ -61,9 +65,9 @@
                 text: model.text,
                 size: model.size
             }
-            widgetService.updateWidget(model.widgetId,heading);
-            console.log("hmm");
-            $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
+            widgetService.updateWidget(model.widgetId,heading).then(function () {
+                $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
+            });
         }
     }
 

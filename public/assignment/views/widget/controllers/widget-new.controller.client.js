@@ -21,9 +21,9 @@
                 size:0,
                 text:""
             };
-            var headingWid = widgetService.createWidget(model.pageId,heading);
-            console.log(headingWid.widgetType);
-            $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget/'+headingWid._id);
+            widgetService.createWidget(model.pageId,heading).then(function (headingWid) {
+                $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget/'+headingWid._id);
+            });
         }
 
         function createHtml() {
@@ -31,8 +31,9 @@
                 widgetType:"HTML",
                 text:""
             };
-            var htmlWid = widgetService.createWidget(model.pageId,htmlWidget);
-            $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget/'+htmlWid._id);
+            widgetService.createWidget(model.pageId,htmlWidget).then(function (htmlWid) {
+                $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget/'+htmlWid._id);
+            })
         }
 
         function createYoutube(){
@@ -41,8 +42,9 @@
                 width: "100%",
                 url: ""
             };
-            var youtubeWid = widgetService.createWidget(model.pageId,youtubeWidget);
-            $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget/'+youtubeWid._id);
+            var youtubeWid = widgetService.createWidget(model.pageId,youtubeWidget).then(function (youtubeWid) {
+                $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget/'+youtubeWid._id);
+            })
         }
 
         function createImage(){
@@ -51,8 +53,9 @@
                 width: "100%",
                 url: ""
             };
-            var imageWid = widgetService.createWidget(model.pageId,imageWidget);
-            $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget/'+imageWid._id);
+            widgetService.createWidget(model.pageId,imageWidget).then(function (imageWid) {
+                $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget/'+imageWid._id);
+            });
         }
 
     }

@@ -15,16 +15,17 @@
         init();
 
         function login(user) {
-            if(!user) {
-                model.errorMessage = "User not found";
-                return;
-            }
-            user = userService.findUserByUsernameAndPassword(user.username, user.password);
-            if(user === null) {
-                model.errorMessage = "User not found";
-            } else {
-                $location.url("user/"+user._id);
-            }
+
+            var promise = userService.findUserByUsernameAndPassword(user.username, user.password);
+            promise
+                .then(function (found) {
+                    if(found !== null) {
+                        $location.url("/user/"+found._id);
+
+                    } else {
+                        model.errorMessage = "User not found";
+                    }
+                });
         }
     }
 })();

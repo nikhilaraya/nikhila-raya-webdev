@@ -12,18 +12,26 @@
         model.unRegister = unRegister;
 
         function init() {
-            model.user = userService.findUserById(userId);
+            userService.findUserById(userId)
+                .then(function (response) {
+                    model.user = response.data;
+                });
         }
         init();
 
         function updateUser(user) {
-            userService.updateUser(user._id, user);
-            $location.url("/user/"+user._id);
+            userService.updateUser(user._id, user)
+                .then(function () {
+                model.message = "user has been updated";
+            })
         }
 
-        function unRegister(userId) {
-            userService.deleteUser(userId);
-            $location.url("/login");
+        function unRegister(userid) {
+            userService.deleteUser(userid).then(function () {
+                $location.url("/");
+            },function () {
+                model.message = "could not unregister! Please try again";
+            })
         }
     }
 

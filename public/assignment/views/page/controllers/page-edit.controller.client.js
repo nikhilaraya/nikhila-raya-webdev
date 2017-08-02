@@ -12,8 +12,20 @@
         model.updatePage = updatePage;
 
         function init(){
-            model.pages = pageService.findPageByWebsiteId(model.websiteId);
-            model.page = pageService.findPageById(model.pageId);
+            pageService
+                .findPageByWebsiteId(model.websiteId)
+                .then(renderPages);
+
+            function renderPages(pages) {
+                model.pages = pages;
+            }
+
+            pageService.findPageById(model.pageId)
+                .then(renderPage);
+
+            function renderPage(page) {
+                model.page = page;
+            };
         }
         init();
 
