@@ -29,7 +29,6 @@
 
         function createUser(user) {
             var url = "/api/user";
-
             return $http.post(url, user);
         }
 

@@ -1,0 +1,42 @@
+<link href="css/style.css" rel="stylesheet"/>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget" class="navbar-text pull-left arrow-padding">
+          <span class="glyphicon glyphicon-chevron-left">
+          </span>
+            </a>
+            <span class="fixed-top-header">Edit Widget</span>
+            <p class="navbar-text pull-right fixed-top-right-link">
+                <a ng-click="model.editHtml()" class="navbar-link">
+                    <span class="glyphicon glyphicon-ok">
+                    </span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+    <div ng-model="model.text"
+         text-angular
+         ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
+        ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
+        ['indent','outdent'],['html']]">
+    </div>
+    <a ng-click="model.deleteWidget()"
+       class="btn btn-default btn-block btn-danger">Delete</a>
+</div>
+
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <p class="navbar-text pull-right fixed-top-header-arrow">
+                <a href="#!/user/{{model.userId}}" class="navbar-link">
+                    <span class="glyphicon glyphicon-user footer-padding">
+                    </span>
+                </a>
+            </p>
+        </div>
+    </div>
+</nav>

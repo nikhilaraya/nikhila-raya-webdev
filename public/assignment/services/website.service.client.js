@@ -12,8 +12,8 @@
         this.deleteWebsite = deleteWebsite;
 
 
-        function deleteWebsite(websiteId) {
-            var url ="/api/website/"+websiteId;
+        function deleteWebsite(userId,websiteId) {
+            var url ="/api/user/"+userId+"/website/"+websiteId;
             return $http.delete(url,websiteId)
                 .then(function (response) {
                 return response.data;

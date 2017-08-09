@@ -18,19 +18,51 @@
             model.url = model.widget.url;
             model.size = model.widget.size;
             model.width = model.widget.width;
+            model.rows = model.widget.rows;
+            model.placeholder = model.widget.placeholder;
+            model.formatted = model.widget.formatted;
         }
 
 
         model.editHeading = editHeading;
         model.editImage = editImage;
         model.editYoutube = editYoutube;
+        model.editHtml = editHtml;
+        model.editText = editText;
         model.deleteWidget = deleteWidget;
 
         function deleteWidget() {
-            widgetService.deleteWidget(model.widgetId).then(function () {
+            widgetService.deleteWidget(model.pageId,model.widgetId).then(function () {
                 $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
             });
         }
+
+        function editHtml() {
+            var htmlWid={
+                _id: model.widget._id,
+                pageId: model.widget.pageId,
+                text:model.text
+            };
+            widgetService.updateWidget(model.widgetId,htmlWid).then(function () {
+                $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
+            })
+        }
+
+        function editText() {
+            var textWid = {
+                _id:model.widget._id,
+                widgetType: "TEXT",
+                rows:model.rows,
+                placeholder:model.placeholder,
+                formatted:model.formatted,
+                text:model.text
+            };
+
+            widgetService.updateWidget(model.pageId,textWid).then(function () {
+                $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
+            })
+        }
+
 
         function editYoutube() {
             var youtube ={
@@ -57,7 +89,6 @@
             });
         }
         function editHeading(){
-            console.log("heading"+model.size+model.name);
             var heading = {
                 _id: model.widget._id,
                 pageId: model.widget.pageId,

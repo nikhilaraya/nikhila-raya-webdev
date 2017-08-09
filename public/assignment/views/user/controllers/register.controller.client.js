@@ -14,14 +14,27 @@
         init();
 
         function createUser(user) {
-            userService.findUserByUsername(user.username)
-                .then(function (response) {
-                    var _user = response.data;
-                    if(_user === "0") {
-                        return userService.createUser(user)
-                    } else {
-                        model.error = "User already exists";
-                    }
+
+            if(user.username === null || user.username === ''||typeof user.username === 'undefined'){
+                model.error ='username is required';
+                return;
+            }
+            if(user.password!== user.password2 || user.password === null || typeof user.password === 'undefined'){
+                model.error = "passwords must match";
+                return;
+            }
+            userService
+                .findUserByUsername(user.username)
+                .then(function () {
+                    model.error = "sorry,that username is taken";
+                },
+                function () {
+                    var newUser ={
+                        username: user.username,
+                        password: user.password
+                };
+                    return userService
+                        .createUser(newUser);
                 })
                 .then(function (response) {
                     _user = response.data;

@@ -33,7 +33,7 @@
             }
 
             function deleteWebsite(websiteId) {
-                websiteService.deleteWebsite(websiteId);
+                websiteService.deleteWebsite(model.userId,websiteId);
                 $location.url('/user/'+model.userId+'/website');
             }
         }

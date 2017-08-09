@@ -14,6 +14,22 @@
         model.createHtml = createHtml;
         model.createYoutube = createYoutube;
         model.createImage = createImage;
+        model.createText = createText;
+
+        function createText() {
+            var textWidget={
+                widgetType:"TEXT",
+                rows:0,
+                placeholder:"",
+                formatted: false,
+                size:0,
+                text:""
+            };
+            widgetService
+                .createWidget(model.pageId,textWidget).then(function (textWid) {
+                $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget/'+textWid._id);
+            })
+        }
 
         function createHeading() {
             var heading = {

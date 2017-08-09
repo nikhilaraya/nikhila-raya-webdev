@@ -2,13 +2,7 @@
  * Created by user on 27-07-2017.
  */
 const app = require('../../express');
-
-var users = [
-    {_id: "123", username: "alice",    password: "alice",    firstName: "Alice",  lastName: "Wonder", isAdmin: true  },
-    {_id: "234", username: "bob",      password: "bob",      firstName: "Bob",    lastName: "Marley"  },
-    {_id: "345", username: "charly",   password: "charly",   firstName: "Charly", lastName: "Garcia"  },
-    {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose",   lastName: "Annunzi" }
-];
+var userModel = require('../models/user/user.model.server');
 
 // http handlers
 app.get("/api/users", getAllUsers);
@@ -20,59 +14,94 @@ app.delete('/api/user/:userId',deleteUser);
 
 function deleteUser(req,res) {
     var userId = req.params.userId;
-    for(var u in users){
-        if(users[u]._id === userId){
-            users.splice(u,1);
-            res.sendStatus(200);
-            return;
-        }
-    }
-    res.sendStatus(404);
+    userModel
+        .deleteUser(userId)
+        .then(function (status) {
+            res.send(status);
+        });
+
+    // for(var u in users){
+    //     if(users[u]._id === userId){
+    //         users.splice(u,1);
+    //         res.sendStatus(200);
+    //         return;
+    //     }
+    // }
+    // res.sendStatus(404);
 }
 
 function updateUser(req, res) {
     var userId = req.params.userId;
     var user = req.body;
+    userModel
+        .updateUser(userId,user)
+        .then(function (status) {
+            res.send(status);
+        });
 
-    for(var u in users) {
-        if(users[u]._id === userId) {
-            users[u] = user;
-            res.send(user)
-            return;
-        }
-    }
-    res.sendStatus(404);
+    // for(var u in users) {
+    //     if(users[u]._id === userId) {
+    //         users[u] = user;
+    //         res.send(user)
+    //         return;
+    //     }
+    // }
+    // res.sendStatus(404);
 }
 
 function registerUser(req, res) {
     var user = req.body;
-    user._id = (new Date()).getTime() + "";
-    users.push(user);
-    res.send(user);
+    userModel
+        .createUser(user)
+        .then(function (user) {
+            res.json(user);
+        },function (error) {
+            res.send(error);
+        });
+    // user._id = (new Date()).getTime() + "";
+    // users.push(user);
+    // res.send(user);
 }
 
 function findUser(req, res) {
     var username = req.query.username;
     var password = req.query.password;
-
-
     if(username && password) {
-        for(var u in users) {
-            var _user = users[u];
-            if(_user.username === username && _user.password === password) {
-                res.send(_user);
-                return;
-            }
-        }
+        userModel
+            .findUserByCredentials(username, password)
+            .then(function (user) {
+                if(user) {
+                    res.json(user);
+                }
+                else
+                {
+                    res.sendStatus(404);
+                }
+            });
+
     } else if(username) {
-        for(var u in users) {
-            if(users[u].username === username) {
-                res.send(users[u]);
-                return;
-            }
-        }
+        userModel
+            .findUserByUsername(username)
+            .then(function (user) {
+                if(user){
+                    res.json(user);
+                }else{
+                    res.sendStatus(404);
+                }
+            });
+        // for(var u in users) {
+        //     if(users[u].username === username) {
+        //         res.send(users[u]);
+        //         return;
+        //     }
+        // }
+    }else{
+        userModel
+            .findTotalUsers()
+            .then(function (users) {
+                res.json(users);
+            });
     }
-    res.send("0");
 }
 
 function getAllUsers(req, response) {
@@ -80,9 +109,15 @@ function getAllUsers(req, response) {
 }
 
 function getUserById(req, response) {
-    for(var u in users) {
-        if(users[u]._id === req.params.userId) {
-            response.send(users[u]);
-        }
-    }
+    var userId = req.params.userId;
+    userModel
+        .findUserById(userId)
+        .then(function (user) {
+            response.json(user);
+        });
+    // for(var u in users) {
+    //     if(users[u]._id === req.params.userId) {
+    //         response.send(users[u]);
+    //     }
+    // }
 }
