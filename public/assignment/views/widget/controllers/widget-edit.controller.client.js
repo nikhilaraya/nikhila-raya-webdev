@@ -49,13 +49,14 @@
         }
 
         function editText() {
+            console.log(model.text+" "+model.placeholder+" "+model.rows+" "+model.formatted);
             var textWid = {
                 _id:model.widget._id,
                 widgetType: "TEXT",
-                rows:model.rows,
-                placeholder:model.placeholder,
-                formatted:model.formatted,
-                text:model.text
+                rows: model.rows,
+                placeholder: model.placeholder,
+                formatted: model.formatted,
+                text: model.text
             };
 
             widgetService.updateWidget(model.pageId,textWid).then(function () {

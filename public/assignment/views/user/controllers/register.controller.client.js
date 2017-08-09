@@ -14,15 +14,6 @@
         init();
 
         function createUser(user) {
-
-            if(user.username === null || user.username === ''||typeof user.username === 'undefined'){
-                model.error ='username is required';
-                return;
-            }
-            if(user.password!== user.password2 || user.password === null || typeof user.password === 'undefined'){
-                model.error = "passwords must match";
-                return;
-            }
             userService
                 .findUserByUsername(user.username)
                 .then(function () {

@@ -104,8 +104,8 @@ function deleteWidget(req,res) {
 }
 
 function sortingWidgets(req,res) {
-    var startIndex = req.query.initial;
-    var stopIndex = req.query.final;
+    var startIndex = parseInt(req.query.initial);
+    var stopIndex = parseInt(req.query.final);
     var pageId = req.params.pageId;
 
     widgetModel
