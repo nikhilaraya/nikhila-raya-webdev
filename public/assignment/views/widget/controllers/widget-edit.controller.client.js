@@ -59,7 +59,7 @@
                 text: model.text
             };
 
-            widgetService.updateWidget(model.pageId,textWid).then(function () {
+            widgetService.updateWidget(model.widgetId,textWid).then(function () {
                 $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget');
             })
         }

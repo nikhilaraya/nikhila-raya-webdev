@@ -17,6 +17,7 @@
         model.createText = createText;
 
         function createText() {
+            console.log("in create text");
             var textWidget={
                 widgetType:"TEXT",
                 rows:0,
@@ -27,6 +28,7 @@
             };
             widgetService
                 .createWidget(model.pageId,textWidget).then(function (textWid) {
+                    console.log(textWidget.widgetType);
                 $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget/'+textWid._id);
             })
         }
